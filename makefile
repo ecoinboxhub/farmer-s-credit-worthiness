@@ -21,8 +21,8 @@ update-branch:
 	git push --force origin HEAD:update
 
 hf-login:
-	git fetch origin update
-	git checkout update
+	git fetch origin update 2>/dev/null || echo "update branch not found"
+	git checkout update 2>/dev/null || git checkout -b update
 	pip install -U "huggingface_hub[cli]"
 	huggingface-cli login --token $(HF) --add-to-git-credential
 
