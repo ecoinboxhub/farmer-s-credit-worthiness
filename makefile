@@ -24,7 +24,7 @@ hf-login:
 	git fetch origin update 2>/dev/null || echo "update branch not found"
 	git checkout update 2>/dev/null || git checkout -b update
 	pip install -U "huggingface_hub[cli]"
-	huggingface-cli login --token $(HF) --add-to-git-credential
+	huggingface-cli login --token $(HF)
 
 push-hub:
 	huggingface-cli upload Ultra123-hub/farmer-credit-worthiness . \
